@@ -13,6 +13,11 @@ public class WheelPhysics : MonoBehaviour
     public float SteeringGrip;
     public float WheelMass;
 
+    public AnimationCurve PowerCurve;
+    [Range(0,1)]
+    public float RollingResistance;
+    public float MaxTorque;
+
     private Vector3 overallForce;
     private Rigidbody vehicleRigidbody;
 
@@ -37,18 +42,15 @@ public class WheelPhysics : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, groundContactRayLength))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * groundContactRayLength, Color.white);
-            Debug.Log($"{gameObject.name} Contact");
         
             CalculateSuspension(hit.distance);
             CalculateSteeringForce();
             CalculateDrive();
-            CalculateBrake();
             ApplyForce();
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * groundContactRayLength, Color.red);
-            Debug.Log($"{gameObject.name} not in contact with ground.");
         }
     }
 
@@ -65,6 +67,13 @@ public class WheelPhysics : MonoBehaviour
         {
             SteeringGrip = vehicle.SteeringGripFactor;
             WheelMass = vehicle.SteeringWheelMass;
+        }
+        
+        if(vehicle.OverrideDriveParams)
+        {
+            PowerCurve = vehicle.DrivePowerCurve;
+            RollingResistance = vehicle.DriveRollingResistance;
+            MaxTorque = vehicle.DriveMaxTorque;
         }
     }
 
@@ -111,11 +120,46 @@ public class WheelPhysics : MonoBehaviour
 
     private void CalculateDrive()
     {
+        Vector3 accelerationDirection = transform.forward;
 
-    }
+        float accelerationInput = Input.GetAxis("Vertical");
 
-    private void CalculateBrake()
-    {
+        float vehicleSpeed = Vector3.Dot(vehicle.transform.forward, vehicleRigidbody.velocity);
+        //Speed as a normalised percentage of max.
+        float normalisedSpeed = Mathf.Clamp01(Mathf.Abs(vehicleSpeed) / vehicle.TopSpeed);
+        Vector3 driveForce = new Vector3(0,0,0);
+
+        //Forward
+        if (accelerationInput != 0)
+        {
+            //Available power for this wheel
+            float availableTorque = PowerCurve.Evaluate(normalisedSpeed) * MaxTorque * accelerationInput;
+            driveForce = accelerationDirection * availableTorque;
+            overallForce += driveForce;
+        }
+
+
+        //Neutral;
+        if (accelerationInput == 0)
+        {
+            Vector3 deccelerationDirection = -transform.forward;
+            driveForce = deccelerationDirection * vehicleSpeed * RollingResistance;
+            overallForce += driveForce;
+            if (vehicleSpeed < 0.1 && vehicleSpeed > -0.1)
+            {
+                vehicleRigidbody.velocity = new Vector3(0, 0, 0);
+            }
+        }
+
+        //Brake
+        if (Input.GetButton("Brake"))
+        {
+            Vector3 brakeForce = -accelerationDirection * vehicleSpeed;
+            overallForce += brakeForce;
+            Debug.DrawRay(transform.position, brakeForce, Color.blue);
+        }
+
+        Debug.DrawRay(transform.position, driveForce, Color.blue);
 
     }
 

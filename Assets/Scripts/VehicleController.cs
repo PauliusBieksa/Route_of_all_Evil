@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VehicleController : MonoBehaviour
 {
+    public float TopSpeed;
+
     public bool OverrideSuspensionParams;
     public float SuspensionRestDistance;
     public float SuspensionSpringStrength;
@@ -16,6 +18,12 @@ public class VehicleController : MonoBehaviour
     public WheelPhysics[] SteerableWheels;
     public float maxSteerAngle;
 
+    public bool OverrideDriveParams;
+    public AnimationCurve DrivePowerCurve;
+    [Range(0, 1)]
+    public float DriveRollingResistance;
+    public float DriveMaxTorque;
+
 
     // Update is called once per frame
     void Update()
@@ -24,7 +32,7 @@ public class VehicleController : MonoBehaviour
         Debug.Log(steeringInput);
         foreach(WheelPhysics wheel in SteerableWheels)
         {
-            wheel.transform.rotation = Quaternion.Euler(0, maxSteerAngle * steeringInput, 0);
+            wheel.transform.localRotation = Quaternion.Euler(0, maxSteerAngle * steeringInput, 0);
         }
 
 

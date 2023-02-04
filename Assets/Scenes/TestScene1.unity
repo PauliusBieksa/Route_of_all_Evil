@@ -554,6 +554,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
         type: 3}
+      propertyPath: OverrideDriveParams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DriveRollingResistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
       propertyPath: OverrideSteeringParams
       value: 1
       objectReference: {fileID: 0}
@@ -582,6 +592,111 @@ PrefabInstance:
       propertyPath: SteerableWheels.Array.data[1]
       value: 
       objectReference: {fileID: 1985552268}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[0].time
+      value: -0.004164632
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].time
+      value: 0.30640954
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[2].time
+      value: 0.77514905
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[3].time
+      value: 1.1374791
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[0].value
+      value: 0.80423266
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].value
+      value: 0.9907706
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[2].value
+      value: 1.0023195
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[3].value
+      value: 0.7971705
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].inSlope
+      value: 0.009320995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[2].inSlope
+      value: -0.010922744
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].inWeight
+      value: 0.7868907
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].outSlope
+      value: 0.009320995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[2].inWeight
+      value: 0.34003294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[2].outSlope
+      value: -0.010922744
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].outWeight
+      value: 0.37348583
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[2].outWeight
+      value: 0.6798663
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DrivePowerCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c1e63b07ecfc6489b01d1c6eebaa27, type: 3}
 --- !u!114 &1985552268 stripped
