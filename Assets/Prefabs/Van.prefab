@@ -246,11 +246,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f151ee68daa11af449914f5bf27d271c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundContactRayLength: 0
+  groundContactRayLength: 1
   vehicle: {fileID: 8742423591042733592}
   RestDistance: 0
   SpringStrength: 0
   SpringDamper: 0
+  SteeringGrip: 0
+  WheelMass: 0
+  PowerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RollingResistance: 0
+  MaxTorque: 0
 --- !u!1 &1328428152
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,11 +389,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f151ee68daa11af449914f5bf27d271c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundContactRayLength: 0
+  groundContactRayLength: 1
   vehicle: {fileID: 8742423591042733592}
-  RestDistance: 1.6
-  SpringStrength: 100
-  SpringDamper: 50
+  RestDistance: 0
+  SpringStrength: 0
+  SpringDamper: 0
+  SteeringGrip: 0
+  WheelMass: 0
+  PowerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RollingResistance: 0
+  MaxTorque: 0
 --- !u!1 &1985552266
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,11 +448,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f151ee68daa11af449914f5bf27d271c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundContactRayLength: 0
+  groundContactRayLength: 1
   vehicle: {fileID: 8742423591042733592}
   RestDistance: 0
   SpringStrength: 0
   SpringDamper: 0
+  SteeringGrip: 0
+  WheelMass: 0
+  PowerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RollingResistance: 0
+  MaxTorque: 0
 --- !u!1 &2113884597
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,11 +507,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f151ee68daa11af449914f5bf27d271c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundContactRayLength: 0
+  groundContactRayLength: 1
   vehicle: {fileID: 8742423591042733592}
   RestDistance: 0
   SpringStrength: 0
   SpringDamper: 0
+  SteeringGrip: 0
+  WheelMass: 0
+  PowerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RollingResistance: 0
+  MaxTorque: 0
 --- !u!1 &7177225415709189090
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,10 +603,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206558d28e0a4e45801c136a22b0c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TopSpeed: 0
   OverrideSuspensionParams: 1
-  SuspensionRestDistance: 1.6
-  SuspensionSpringStrength: 100
-  SuspensionDamper: 60
+  SuspensionRestDistance: 1.1
+  SuspensionSpringStrength: 10
+  SuspensionDamper: 10
+  OverrideSteeringParams: 1
+  SteeringGripFactor: 10
+  SteeringWheelMass: 0.01
+  SteerableWheels:
+  - {fileID: 1031423567485113354}
+  - {fileID: 4873816246345839970}
+  maxSteerAngle: 45
+  OverrideDriveParams: 1
+  DrivePowerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.004164632
+      value: 0.80423266
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.30640954
+      value: 0.9907706
+      inSlope: 0.009320995
+      outSlope: 0.009320995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.7868907
+      outWeight: 0.37348583
+    - serializedVersion: 3
+      time: 0.77514905
+      value: 1.0023195
+      inSlope: -0.010922744
+      outSlope: -0.010922744
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.34003294
+      outWeight: 0.6798663
+    - serializedVersion: 3
+      time: 1.1374791
+      value: 0.7971705
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DriveRollingResistance: 1
+  DriveMaxTorque: 0
 --- !u!1001 &443221565
 PrefabInstance:
   m_ObjectHideFlags: 0
