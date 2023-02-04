@@ -10,6 +10,9 @@ public class WheelPhysics : MonoBehaviour
     public float SpringStrength;
     public float SpringDamper;
 
+    public float SteeringGrip;
+    public float WheelMass;
+
     private Vector3 overallForce;
     private Rigidbody vehicleRigidbody;
 
@@ -37,7 +40,7 @@ public class WheelPhysics : MonoBehaviour
             Debug.Log($"{gameObject.name} Contact");
         
             CalculateSuspension(hit.distance);
-            CalculateSteringForce();
+            CalculateSteeringForce();
             CalculateDrive();
             CalculateBrake();
             ApplyForce();
@@ -56,6 +59,12 @@ public class WheelPhysics : MonoBehaviour
             RestDistance = vehicle.SuspensionRestDistance;
             SpringStrength = vehicle.SuspensionSpringStrength;
             SpringDamper = vehicle.SuspensionDamper;
+        }
+
+        if(vehicle.OverrideSteeringParams)
+        {
+            SteeringGrip = vehicle.SteeringGripFactor;
+            WheelMass = vehicle.SteeringWheelMass;
         }
     }
 
@@ -77,14 +86,26 @@ public class WheelPhysics : MonoBehaviour
 
         Vector3 suspensionForce = springDirection * force;
 
-        Debug.DrawRay(transform.position, suspensionForce, Color.red, force);
-        Debug.DrawRay(vehicle.transform.position, vehicleRigidbody.mass * new Vector3(0, -9.8f, 0), Color.red, force);
+        Debug.DrawRay(transform.position, suspensionForce, Color.green);
         overallForce += suspensionForce;
     }
 
     
-    private void CalculateSteringForce()
+    private void CalculateSteeringForce()
     {
+        Vector3 steeringDirection = transform.right;
+
+        Vector3 wheelWorldVelocity = vehicleRigidbody.GetPointVelocity(transform.position);
+
+        float  steeringVelocity = Vector3.Dot(steeringDirection, wheelWorldVelocity);
+
+        float desiredVelocityChange = -steeringVelocity * SteeringGrip;
+
+        float desiredAcceleration = desiredVelocityChange / Time.fixedDeltaTime;
+
+        Vector3 steeringForce = (steeringDirection * WheelMass * desiredAcceleration);
+        Debug.DrawRay(transform.position, steeringForce, Color.red);
+        overallForce += steeringForce;
 
     }
 
