@@ -15,7 +15,8 @@ public class VehicleController : MonoBehaviour
     public float SteeringGripFactor;
     public float SteeringWheelMass;
 
-    public WheelPhysics[] SteerableWheels;
+    public WheelPhysics[] SteerableWheelsFront;
+    public WheelPhysics[] SteerableWheelsRear;
     public float maxSteerAngle;
 
     public bool OverrideDriveParams;
@@ -29,10 +30,14 @@ public class VehicleController : MonoBehaviour
     void Update()
     {
         float steeringInput = Input.GetAxis("Horizontal");
-        Debug.Log(steeringInput);
-        foreach(WheelPhysics wheel in SteerableWheels)
+        foreach(WheelPhysics wheel in SteerableWheelsFront)
         {
             wheel.transform.localRotation = Quaternion.Euler(0, maxSteerAngle * steeringInput, 0);
+        }
+
+        foreach (WheelPhysics wheel in SteerableWheelsRear)
+        {
+            wheel.transform.localRotation = Quaternion.Euler(0, -maxSteerAngle * steeringInput, 0);
         }
 
 
