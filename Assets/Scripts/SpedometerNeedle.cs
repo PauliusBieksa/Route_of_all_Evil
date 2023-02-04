@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class SpedometerNeedle : MonoBehaviour
 {
     public Image Needle;
-    public Vector3 maxRotationInput;
+    public float maxRotation;
+    public float startRotation;
     public VehicleController vehicle;
 
 
-    private Quaternion startRot;
-    private Quaternion maxRot;
 
     // Update is called once per frame
     void Update()
     {
         float proportionalSpeed = vehicle.GetComponent<Rigidbody>().velocity.magnitude / vehicle.TopSpeed;
+        float angle = Mathf.Lerp(startRotation, maxRotation, proportionalSpeed);
 
-        maxRot = Quaternion.Euler(maxRotationInput);
-        Quaternion.Slerp(startRot, maxRot, proportionalSpeed);
+        var eulerAngles = transform.eulerAngles;
+        Needle.transform.rotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, angle);
     }
 }
