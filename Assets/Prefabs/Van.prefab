@@ -167,14 +167,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328428152}
-  m_LocalRotation: {x: 0.0763326, y: -0.7029747, z: 0.0763326, w: 0.7029747}
-  m_LocalPosition: {x: 1.635, y: 0.95, z: -1.17}
-  m_LocalScale: {x: 0.26638, y: 0.26638, z: 0.26638}
+  m_LocalRotation: {x: 0.07266927, y: -0, z: 0.0000000074505797, w: 0.9973561}
+  m_LocalPosition: {x: -0, y: 0.186, z: -4.95}
+  m_LocalScale: {x: 0.17455617, y: 0.17455617, z: 0.17455617}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653265387990}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 12.394, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.335, y: 0, z: 0}
 --- !u!212 &1328428154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7177225415709189090}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -542,8 +542,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.635559, y: 2.822823, z: 9.690754}
-  m_Center: {x: 0.045338154, y: 0.2292093, z: -0.07085228}
+  m_Size: {x: 3.635559, y: 0.86007524, z: 9.690754}
+  m_Center: {x: 0.045338154, y: -0.7521647, z: -0.07085228}
 --- !u!114 &8742423591042733592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,63 +556,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5206558d28e0a4e45801c136a22b0c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TopSpeed: 0
+  TopSpeed: 10
   OverrideSuspensionParams: 1
   SuspensionRestDistance: 1.1
-  SuspensionSpringStrength: 10
+  SuspensionSpringStrength: 100
   SuspensionDamper: 10
   OverrideSteeringParams: 1
-  SteeringGripFactor: 10
+  SteeringGripFactor: 5
   SteeringWheelMass: 0.01
-  SteerableWheels:
+  SteerableWheelsFront:
   - {fileID: 1031423567485113354}
   - {fileID: 4873816246345839970}
-  maxSteerAngle: 45
+  SteerableWheelsRear: []
+  maxSteerAngle: 20
   OverrideDriveParams: 1
   DrivePowerCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.004164632
-      value: 0.80423266
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      time: -0.0026417472
+      value: 1.0072101
+      inSlope: -0.5042624
+      outSlope: -0.5042624
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.30640954
-      value: 0.9907706
-      inSlope: 0.009320995
-      outSlope: 0.009320995
-      tangentMode: 0
+      time: 1.0014174
+      value: 0.50090086
+      inSlope: -0.5042624
+      outSlope: -0.5042624
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.7868907
-      outWeight: 0.37348583
-    - serializedVersion: 3
-      time: 0.77514905
-      value: 1.0023195
-      inSlope: -0.010922744
-      outSlope: -0.010922744
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.34003294
-      outWeight: 0.6798663
-    - serializedVersion: 3
-      time: 1.1374791
-      value: 0.7971705
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  DriveRollingResistance: 1
-  DriveMaxTorque: 0
+  DriveRollingResistance: 0.1
+  DriveMaxTorque: 10
 --- !u!1 &7281881323745727085
 GameObject:
   m_ObjectHideFlags: 0
