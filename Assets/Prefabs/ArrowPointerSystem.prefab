@@ -43,7 +43,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7621634517652187880}
   - component: {fileID: 7621634517652187877}
-  - component: {fileID: 7621634517652187883}
   - component: {fileID: 7621634517652187882}
   m_Layer: 0
   m_Name: CanvasCamera
@@ -110,14 +109,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7621634517652187883
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7621634517652187876}
-  m_Enabled: 1
 --- !u!114 &7621634517652187882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,3 +232,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 535703159581205534}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9035489378564501384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8794319066744654742, guid: 861ed9108fd9c7f4f93551187aa64144,
+    type: 3}
+  m_PrefabInstance: {fileID: 535703159581205534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1414409745852648300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035489378564501384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b27e6433286d9243bb2f531af359d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  vehicle: {fileID: 0}
+  RenderCam: {fileID: 7621634517652187877}
+  TextureFormat: {fileID: 8600000, guid: 4c86babf6298333498acd92568804c3b, type: 2}

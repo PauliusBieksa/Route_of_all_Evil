@@ -35,6 +35,8 @@ public class GameState : MonoBehaviour
     public int[] pricings = { 60, 150, 300, 420 };
     public GameObject van;
     public float throwForce;
+    public GameObject orderLayout;
+    public GameObject orderDisplayer;
 
     // lists
     private List<string> itemNames = new List<string>();
@@ -49,6 +51,7 @@ public class GameState : MonoBehaviour
     public int selctedOrderIndex = 0;
     private int nextBoxIndex = 0;
     private Vector3 throwDirection;
+    private OrderVisualiser orderVisualiser;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +87,8 @@ public class GameState : MonoBehaviour
 
         cash = startingCash;
         throwDirection = new Vector3(-45, 0, 0);
+
+        GetOrders();
     }
 
     void Update()
@@ -103,6 +108,9 @@ public class GameState : MonoBehaviour
             order.item = itemNames[Random.Range(0, itemNames.Count)];
             order.reward += Random.Range(0, 120);
             orders.Add(order);
+            GameObject displayer = Instantiate(orderDisplayer, orderLayout.transform);
+            displayer.GetComponent<OrderVisualiser>().Initialise(order);
+            Debug.Log("dsfasdfasdfas");
         }
         return orders;
     }

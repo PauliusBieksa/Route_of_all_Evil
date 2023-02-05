@@ -8289,6 +8289,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 741897843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &742210471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 722026013989730, guid: e306ebf1f8e273346914a9a592e26810,
+    type: 3}
+  m_PrefabInstance: {fileID: 219851504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &743788892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3e571dcf5f331d14681a362abbed1409,
@@ -24178,6 +24184,17 @@ PrefabInstance:
       propertyPath: van
       value: 
       objectReference: {fileID: 1277065505}
+    - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
+        type: 3}
+      propertyPath: orderLayout
+      value: 
+      objectReference: {fileID: 742210471}
+    - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
+        type: 3}
+      propertyPath: orderDisplayer
+      value: 
+      objectReference: {fileID: 4488791763280948974, guid: 0856b06d2800b5c4387d67b96b93b93d,
+        type: 3}
     - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
         type: 3}
       propertyPath: roadsContainer

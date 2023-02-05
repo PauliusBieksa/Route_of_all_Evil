@@ -16,14 +16,16 @@ public class DirectionVisualiser : MonoBehaviour
     private void Start()
     {
         targetTex = new RenderTexture(256, 256, 16, RenderTextureFormat.ARGB32);
-        targetTex.Create();
         targetTex.descriptor = TextureFormat.descriptor;
+        targetTex.Create();
         RenderCam.targetTexture = targetTex;
 
         
-        Transform parent = GetComponentInParent<Transform>();
+        Transform parent = GetComponentsInParent<Transform>()[1];
         parent.position = new Vector3(NextPosition, parent.position.y, parent.position.z);
         NextPosition += 10;
+
+        //vehicle = GameObject.Find("Van").GetComponent<VehicleController>();
     }
 
     // Update is called once per frame

@@ -10,9 +10,9 @@ public class OrderVisualiser : MonoBehaviour
     public GameObject ArrowSystem;
 
     private VehicleController vehicle;
-    private TextMeshProUGUI Item;
-    private TextMeshProUGUI Address;
-    private TextMeshProUGUI Payout;
+    public TextMeshProUGUI Item;
+    public TextMeshProUGUI Address;
+    public TextMeshProUGUI Payout;
 
     private DirectionVisualiser arrow;
 
