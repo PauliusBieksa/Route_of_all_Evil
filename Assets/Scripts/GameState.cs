@@ -144,11 +144,16 @@ public class GameState : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.E))
         {
-            selctedOrderIndex += 1;
-            if (selctedOrderIndex == currentOrders.Count)
-            {
-                selctedOrderIndex = 0;
-            }
+            IncrementOrderIndex();
+        }
+    }
+
+    private void IncrementOrderIndex()
+    {
+        selctedOrderIndex += 1;
+        if (selctedOrderIndex >= currentOrders.Count)
+        {
+            selctedOrderIndex = 0;
         }
     }
 
@@ -200,6 +205,8 @@ public class GameState : MonoBehaviour
             currentOrders.Add(new Order(0, "Back to warehouse", "for more fulfilment", warehouse));
             pickupZone.SetActive(true);
         }
+
+        IncrementOrderIndex();
     }
 
     public void ThrowBox()

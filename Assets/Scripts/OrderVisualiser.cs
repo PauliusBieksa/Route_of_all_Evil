@@ -25,14 +25,11 @@ public class OrderVisualiser : MonoBehaviour
     
 
     private DirectionVisualiser arrow;
-
-    private void OnEnable()
-    {
-        OnOrderRemove += Destructor;
-    }
+    
 
     public void Initialise(GameState.Order order, int orderNum)
     {
+        OnOrderRemove += Destructor;
         gameState = GameObject.FindObjectOfType<GameState>();
         thisOrder = order;
         thisOrderIndex = orderNum;
@@ -50,7 +47,7 @@ public class OrderVisualiser : MonoBehaviour
 
     private void Update()
     {
-        if (gameState.selctedOrderIndex == thisOrderIndex)
+        if (gameState.currentOrders[gameState.selctedOrderIndex] == thisOrder)
         {
             gameObject.transform.localScale = new Vector3(1, 1.2f, 1);
         }
