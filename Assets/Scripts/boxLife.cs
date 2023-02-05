@@ -20,7 +20,7 @@ public class boxLife : MonoBehaviour
     void Update()
     {
         if (gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude < 0.2) lifetime -= Time.deltaTime;
-        if (lifetime <= 0)
+        if (lifetime <= 0 && !failedOrder)
         {
             gameState.FailToDeliver(boxOrder);
             failedOrder = true;

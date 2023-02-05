@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameState : MonoBehaviour
         public string address;
         public string item;
         public GameObject building;
+        public bool locked;
 
         public static bool operator ==(Order a, Order b)
         {
@@ -26,6 +28,11 @@ public class GameState : MonoBehaviour
             }
         }
 
+        public void SetLockedState(bool lockState)
+        {
+            locked = lockState;
+        }
+
         public static bool operator !=(Order a, Order b)
         {
             return !(a == b);
@@ -33,6 +40,7 @@ public class GameState : MonoBehaviour
 
         public Order(float reward, string address, string item, GameObject building)
         {
+            locked = false;
             this.reward = reward;
             this.address = address;
             this.item = item;
@@ -40,6 +48,7 @@ public class GameState : MonoBehaviour
         }
         public Order(Order other)
         {
+            this.locked = other.locked;
             this.reward = other.reward;
             this.address = other.address;
             this.item = other.item;
@@ -78,6 +87,7 @@ public class GameState : MonoBehaviour
     private Vector3 throwDirection;
     private OrderVisualiser orderVisualiser;
     private bool thrown = false;
+    private List<Order> lockedOrders = new List<Order>();
 
     // Start is called before the first frame update
     void Start()
@@ -206,14 +216,23 @@ public class GameState : MonoBehaviour
             pickupZone.SetActive(true);
         }
 
+        lockedOrders.Remove(order);
+
         IncrementOrderIndex();
     }
 
     public void ThrowBox()
     {
+        if (lockedOrders.Contains(currentOrders[selctedOrderIndex]))
+        {
+            return;
+        }
+        
         boxes[nextBoxIndex].Spawn(throwPointer.position, GetThrowVelocity(), currentOrders[selctedOrderIndex]);
         nextBoxIndex++;
         if (nextBoxIndex == 6) nextBoxIndex = 0;
+
+        lockedOrders.Add(currentOrders[selctedOrderIndex]);
     }
 
     public Vector3 GetThrowPosition()
