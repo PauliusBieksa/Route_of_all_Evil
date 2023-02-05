@@ -129,8 +129,10 @@ public class WheelPhysics : MonoBehaviour
         float normalisedSpeed = Mathf.Clamp01(Mathf.Abs(vehicleSpeed) / vehicle.TopSpeed);
         Vector3 driveForce = new Vector3(0,0,0);
 
+
+
         //Forward
-        if (accelerationInput != 0)
+        if (accelerationInput != 0 && vehicleSpeed < vehicle.TopSpeed)
         {
             //Available power for this wheel
             float availableTorque = PowerCurve.Evaluate(normalisedSpeed) * MaxTorque * accelerationInput;
@@ -140,7 +142,7 @@ public class WheelPhysics : MonoBehaviour
 
 
         //Neutral;
-        if (accelerationInput == 0)
+        if (accelerationInput == 0 && vehicleSpeed > -vehicle.TopSpeed)
         {
             Vector3 deccelerationDirection = -transform.forward;
             driveForce = deccelerationDirection * vehicleSpeed * RollingResistance;
@@ -149,14 +151,6 @@ public class WheelPhysics : MonoBehaviour
             {
                 vehicleRigidbody.velocity = new Vector3(0, 0, 0);
             }
-        }
-
-        //Brake
-        if (Input.GetButton("Brake"))
-        {
-            Vector3 brakeForce = -accelerationDirection * vehicleSpeed;
-            overallForce += brakeForce;
-            Debug.DrawRay(transform.position, brakeForce, Color.blue);
         }
 
         Debug.DrawRay(transform.position, driveForce, Color.blue);
