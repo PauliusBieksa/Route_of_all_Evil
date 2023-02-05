@@ -25,6 +25,7 @@ public class VehicleController : MonoBehaviour
     public float DriveRollingResistance;
     public float DriveMaxTorque;
 
+    public GameState gameState;
     public bool overrideDownforce;
     public float DownforceConstant;
     public double DownForceThreshold;
@@ -47,6 +48,14 @@ public class VehicleController : MonoBehaviour
         //RightingForce();
         
         Debug.DrawRay(transform.position, GetComponent<Rigidbody>().mass * Physics.gravity, Color.white);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "PickupZone")
+        {
+            gameState.GetOrders();
+        }
     }
 
     private void RightingForce()
