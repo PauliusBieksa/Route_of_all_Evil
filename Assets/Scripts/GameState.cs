@@ -141,6 +141,15 @@ public class GameState : MonoBehaviour
         {
             throwPointer.gameObject.SetActive(false);
         }
+        
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            selctedOrderIndex += 1;
+            if (selctedOrderIndex == currentOrders.Count)
+            {
+                selctedOrderIndex = 0;
+            }
+        }
     }
 
 

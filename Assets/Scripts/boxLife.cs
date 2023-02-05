@@ -19,7 +19,7 @@ public class boxLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude < 0.1) lifetime -= Time.deltaTime;
+        if (gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude < 0.2) lifetime -= Time.deltaTime;
         if (lifetime <= 0)
         {
             gameState.FailToDeliver(boxOrder);
@@ -44,14 +44,13 @@ public class boxLife : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (failedOrder) return;
-        foreach (GameState.Order order in gameState.currentOrders)
         {
-            if (collision.gameObject == order.building)
+            if (collision.gameObject == boxOrder.building)
             {
-                gameState.Deliver(order);
+                gameState.Deliver(boxOrder);
                 Despawn();
-                break;
             }
+
         }
     }
 }
