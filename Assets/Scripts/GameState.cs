@@ -28,7 +28,7 @@ public class GameState : MonoBehaviour
     }
     // Editor values
     public GameObject roadsContainer;
-    public List<GameObject> boxes;
+    public List<boxLife> boxes;
     public int numOfOrders;
     public float startingCash;
     public float cashBleedRate;   
@@ -41,7 +41,11 @@ public class GameState : MonoBehaviour
     [HideInInspector]
     public List<Order> currentOrders = new List<Order>();
 
-    private float cash;
+    [HideInInspector]
+    public float cash;
+    [HideInInspector]
+    public int selctedOrderIndex = 0;
+    private int nextBoxIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -105,9 +109,20 @@ public class GameState : MonoBehaviour
         currentOrders = CreateOrders(numOfOrders);
     }
 
-    public void Deliver(int orderIndex)
+    public void Deliver(Order order)
     {
+        cash += order.reward;
+        currentOrders.Remove(order);
+    }
 
+    public void FailToDeliver(Order order)
+    {
+        currentOrders.Remove(order);
+    }
+
+    public void Throw()
+    {
+        //boxes[nextBoxIndex].Spawn()
     }
 
     private void GameOver()
