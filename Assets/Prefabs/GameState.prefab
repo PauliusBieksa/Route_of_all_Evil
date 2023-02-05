@@ -56,3 +56,7 @@ MonoBehaviour:
   startingCash: 300
   cashBleedRate: 3
   pricings: 3c000000960000002c010000a4010000
+  van: {fileID: 0}
+  throwForce: 5
+  cash: 0
+  selctedOrderIndex: 0

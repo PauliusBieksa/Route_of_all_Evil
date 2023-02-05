@@ -8,6 +8,7 @@ public class boxLife : MonoBehaviour
 
     private float lifetime;
     private GameState.Order boxOrder;
+    private bool failedOrder = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,12 @@ public class boxLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lifetime -= Time.deltaTime;
-        
+        if (gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude < 0.1) lifetime -= Time.deltaTime;
+        if (lifetime <= 0)
+        {
+            gameState.FailToDeliver(boxOrder);
+            failedOrder = true;
+        }
     }
 
     private void Despawn()

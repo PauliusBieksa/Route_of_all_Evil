@@ -33,6 +33,8 @@ public class GameState : MonoBehaviour
     public float startingCash;
     public float cashBleedRate;   
     public int[] pricings = { 60, 150, 300, 420 };
+    public GameObject van;
+    public float throwForce;
 
     // lists
     private List<string> itemNames = new List<string>();
@@ -46,6 +48,7 @@ public class GameState : MonoBehaviour
     [HideInInspector]
     public int selctedOrderIndex = 0;
     private int nextBoxIndex = 0;
+    private Vector3 throwDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -73,14 +76,14 @@ public class GameState : MonoBehaviour
                 foreach (Transform buildingNumber in buldingsContainer)
                 {
                     string address = road.name + " " + buildingNumber.name;
-                    int difficulty = int.Parse(road.gameObject.tag.Substring(road.gameObject.tag.Length));
+                    int difficulty = int.Parse(road.gameObject.tag.Substring(road.gameObject.tag.Length - 1));
                     addresses.Add(new Order(pricings[difficulty - 1], address, "", buildingNumber.gameObject));
                 }
             }
         }
 
         cash = startingCash;
-        Debug.Log($"Start{cash}");
+        throwDirection = new Vector3(-45, 0, 0);
     }
 
     void Update()
@@ -121,9 +124,10 @@ public class GameState : MonoBehaviour
         currentOrders.Remove(order);
     }
 
-    public void Throw()
+    public void ThrowBox()
     {
-        //boxes[nextBoxIndex].Spawn()
+        boxes[nextBoxIndex].Spawn(van.transform.position + new Vector3(2.3f, 1.1f, 2.4f),
+            throwDirection * throwForce + van.GetComponent<Rigidbody>().velocity, currentOrders[selctedOrderIndex]);
     }
 
     private void GameOver()
