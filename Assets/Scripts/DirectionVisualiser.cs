@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DirectionVisualiser : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class DirectionVisualiser : MonoBehaviour
     public VehicleController vehicle;
     public Camera RenderCam;
     public RenderTexture TextureFormat;
+    public RawImage displayImage;
 
     public static int NextPosition;
 
@@ -19,6 +21,7 @@ public class DirectionVisualiser : MonoBehaviour
         targetTex.descriptor = TextureFormat.descriptor;
         targetTex.Create();
         RenderCam.targetTexture = targetTex;
+        displayImage.texture = targetTex;
 
         
         Transform parent = GetComponentsInParent<Transform>()[1];
@@ -33,5 +36,6 @@ public class DirectionVisualiser : MonoBehaviour
     {
         Vector3 offset = targetObject.position - vehicle.transform.position;
         transform.LookAt(new Vector3(offset.x, transform.position.y, offset.z));
+        transform.Rotate(0, vehicle.transform.rotation.y, 0);
     }
 }

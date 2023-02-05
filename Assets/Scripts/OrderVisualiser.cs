@@ -13,6 +13,7 @@ public class OrderVisualiser : MonoBehaviour
     public TextMeshProUGUI Item;
     public TextMeshProUGUI Address;
     public TextMeshProUGUI Payout;
+    public RawImage arrowImage;
 
     private DirectionVisualiser arrow;
 
@@ -26,5 +27,6 @@ public class OrderVisualiser : MonoBehaviour
         arrow = Instantiate(ArrowSystem).GetComponentInChildren<DirectionVisualiser>();
         arrow.targetObject = order.building.transform;
         arrow.vehicle = vehicle;
+        arrow.displayImage = arrowImage;
     }
 }
