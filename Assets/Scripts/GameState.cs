@@ -80,6 +80,7 @@ public class GameState : MonoBehaviour
         }
 
         cash = startingCash;
+        Debug.Log($"Start{cash}");
     }
 
     void Update()
