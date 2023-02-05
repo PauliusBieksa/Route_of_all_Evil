@@ -56,6 +56,7 @@ public class GameState : MonoBehaviour
     private int nextBoxIndex = 0;
     private Vector3 throwDirection;
     private OrderVisualiser orderVisualiser;
+    private LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -91,12 +92,19 @@ public class GameState : MonoBehaviour
 
         cash = startingCash;
         throwDirection = new Vector3(-45, 0, 0);
+
+        lineRenderer = new LineRenderer();
     }
 
     void Update()
     {
         cash -= cashBleedRate * Time.deltaTime;
         if (cash < 0) GameOver();
+
+        if (Input.GetAxis("Aim") > 0)
+        {
+            
+        }
     }
 
 
