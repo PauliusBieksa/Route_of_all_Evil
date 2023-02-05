@@ -43,6 +43,7 @@ public class boxLife : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (failedOrder) return;
         foreach (GameState.Order order in gameState.currentOrders)
         {
             if (collision.gameObject == order.building)

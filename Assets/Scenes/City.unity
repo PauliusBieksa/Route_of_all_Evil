@@ -24202,6 +24202,16 @@ PrefabInstance:
       objectReference: {fileID: 1553217245}
     - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
         type: 3}
+      propertyPath: tintedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 721bba35f79e23845870c6fe9cd5a653, type: 2}
+    - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
+        type: 3}
+      propertyPath: originalMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 28b902d3bb9ea2342b7a648b567d1bbf, type: 2}
+    - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
+        type: 3}
       propertyPath: boxes.Array.data[0]
       value: 
       objectReference: {fileID: 1865254443}

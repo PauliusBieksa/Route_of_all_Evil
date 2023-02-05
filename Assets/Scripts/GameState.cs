@@ -37,6 +37,8 @@ public class GameState : MonoBehaviour
     public float throwForce;
     public GameObject orderLayout;
     public GameObject orderDisplayer;
+    public Material originalMaterial;
+    public Material tintedMaterial;
 
     // lists
     private List<string> itemNames = new List<string>();
@@ -110,7 +112,8 @@ public class GameState : MonoBehaviour
             orders.Add(order);
             GameObject displayer = Instantiate(orderDisplayer, orderLayout.transform);
             displayer.GetComponent<OrderVisualiser>().Initialise(order);
-            Debug.Log("dsfasdfasdfas");
+
+            order.building.GetComponent<MeshRenderer>().material = tintedMaterial;
         }
         return orders;
     }
@@ -124,11 +127,13 @@ public class GameState : MonoBehaviour
     public void Deliver(Order order)
     {
         cash += order.reward;
+        order.building.GetComponent<MeshRenderer>().material = originalMaterial;
         currentOrders.Remove(order);
     }
 
     public void FailToDeliver(Order order)
     {
+        order.building.GetComponent<MeshRenderer>().material = originalMaterial;
         currentOrders.Remove(order);
     }
 
