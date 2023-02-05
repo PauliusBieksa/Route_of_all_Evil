@@ -41,6 +41,7 @@ public class GameState : MonoBehaviour
     public Material tintedMaterial;
     public GameObject warehouse;
     public GameObject pickupZone;
+    public Transform throwPointer;
 
     // lists
     private List<string> itemNames = new List<string>();
@@ -56,7 +57,7 @@ public class GameState : MonoBehaviour
     private int nextBoxIndex = 0;
     private Vector3 throwDirection;
     private OrderVisualiser orderVisualiser;
-    private LineRenderer lineRenderer;
+    private bool thrown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -91,9 +92,7 @@ public class GameState : MonoBehaviour
         }
 
         cash = startingCash;
-        throwDirection = new Vector3(-45, 0, 0);
-
-        lineRenderer = new LineRenderer();
+        throwDirection = new Vector3(0.3f, 1, -1);
     }
 
     void Update()
@@ -103,7 +102,24 @@ public class GameState : MonoBehaviour
 
         if (Input.GetAxis("Aim") > 0)
         {
-            
+            Vector3[] pos = { GetThrowPosition(), GetThrowPosition() + GetThrowVelocity() };
+            throwPointer.gameObject.SetActive(true);
+            if (Input.GetAxis("Fire") > 0)
+            {
+                if (!thrown)
+                {
+                    ThrowBox();
+                    thrown = true;
+                }
+            }
+            else
+            {
+                thrown = false;
+            }
+        }
+        else
+        {
+            throwPointer.gameObject.SetActive(false);
         }
     }
 
@@ -158,17 +174,19 @@ public class GameState : MonoBehaviour
 
     public void ThrowBox()
     {
-        boxes[nextBoxIndex].Spawn(GetThrowPosition(), GetThrowVelocity(), currentOrders[selctedOrderIndex]);
+        boxes[nextBoxIndex].Spawn(throwPointer.position, GetThrowVelocity(), currentOrders[selctedOrderIndex]);
+        nextBoxIndex++;
+        if (nextBoxIndex == 6) nextBoxIndex = 0;
     }
 
     public Vector3 GetThrowPosition()
     {
-        return van.transform.position + new Vector3(2.3f, 1.1f, 2.4f);
+        return throwPointer.position;
     }
 
     public Vector3 GetThrowVelocity()
     {
-        return throwDirection * throwForce + van.GetComponent<Rigidbody>().velocity;
+        return throwPointer.up * throwForce + van.GetComponent<Rigidbody>().velocity;
     }
 
     private void GameOver()
