@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,9 @@ using UnityEngine.UI;
 
 public class OrderVisualiser : MonoBehaviour
 {
-    
+
+    public static Action<GameState.Order> OnOrderRemove;
+
     public GameObject ArrowSystem;
 
     private VehicleController vehicle;
@@ -14,12 +17,19 @@ public class OrderVisualiser : MonoBehaviour
     public TextMeshProUGUI Address;
     public TextMeshProUGUI Payout;
     public RawImage arrowImage;
+    private GameState.Order thisOrder;
     
 
     private DirectionVisualiser arrow;
 
+    private void OnEnable()
+    {
+        OnOrderRemove += Destructor;
+    }
+
     public void Initialise(GameState.Order order, int orderNum)
     {
+        thisOrder = order;
         vehicle = GameObject.FindObjectOfType<VehicleController>();
         Transform[] vehicleArrowHolders = vehicle.transform.Find("ArrowOffsets").GetComponentsInChildren<Transform>();
         Item.text = order.item;
@@ -30,5 +40,19 @@ public class OrderVisualiser : MonoBehaviour
         arrow.targetObject = order.building.transform;
         arrow.VehicleArrowTransform = vehicleArrowHolders[orderNum+1];
         arrow.displayImage = arrowImage;
+    }
+
+    private void Destructor(GameState.Order order)
+    {
+        if (order == thisOrder)
+        {
+            Destroy(ArrowSystem);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDisable()
+    {
+        OnOrderRemove += Destructor;
     }
 }
