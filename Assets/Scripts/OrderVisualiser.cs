@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class OrderVisualiser : MonoBehaviour
 {
-    public Transform targetObject;
     public VehicleController vehicle;
     public GameObject ArrowSystem;
 
@@ -16,12 +15,14 @@ public class OrderVisualiser : MonoBehaviour
 
     private DirectionVisualiser arrow;
 
-    private void Start()
+    public void Initialise(GameState.Order order)
     {
+        Item.text = order.item;
+        Address.text = order.address;
+        Payout.text = $"${order.reward:0.##}";
+
         arrow = Instantiate(ArrowSystem).GetComponentInChildren<DirectionVisualiser>();
-        arrow.targetObject = targetObject;
+        arrow.targetObject = order.building.transform;
         arrow.vehicle = vehicle;
-
     }
-
 }
