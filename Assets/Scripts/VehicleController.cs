@@ -25,6 +25,8 @@ public class VehicleController : MonoBehaviour
     public float DriveRollingResistance;
     public float DriveMaxTorque;
 
+    public GameState gameState;
+
 
     // Update is called once per frame
     void Update()
@@ -42,5 +44,13 @@ public class VehicleController : MonoBehaviour
 
 
         Debug.DrawRay(transform.position, GetComponent<Rigidbody>().mass * Physics.gravity, Color.white);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "PickupZone")
+        {
+            gameState.GetOrders();
+        }
     }
 }

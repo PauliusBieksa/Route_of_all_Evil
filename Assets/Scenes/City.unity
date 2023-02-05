@@ -22614,6 +22614,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
         type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 163786823}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
       propertyPath: maxSteerAngle
       value: 35
       objectReference: {fileID: 0}

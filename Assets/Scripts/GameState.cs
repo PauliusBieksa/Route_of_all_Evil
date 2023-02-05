@@ -92,7 +92,7 @@ public class GameState : MonoBehaviour
         cash = startingCash;
         throwDirection = new Vector3(-45, 0, 0);
 
-        GetOrders();
+        //GetOrders();
     }
 
     void Update()
