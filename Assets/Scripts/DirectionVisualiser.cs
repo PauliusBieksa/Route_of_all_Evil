@@ -36,6 +36,8 @@ public class DirectionVisualiser : MonoBehaviour
     void Update()
     {
         Vector3 offset = targetObject.position - VehicleArrowTransform.position;
+        
+        Debug.DrawRay(VehicleArrowTransform.position, offset, Color.magenta);
         transform.LookAt(new Vector3(offset.x, transform.position.y, offset.z));
         transform.Rotate(0, VehicleArrowTransform.rotation.y, 0);
         
