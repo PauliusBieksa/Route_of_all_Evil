@@ -23604,8 +23604,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124051838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.41, y: -6.67, z: 32}
-  m_LocalScale: {x: 15.64, y: 15.64, z: 26.8}
+  m_LocalPosition: {x: 12.41, y: 0.67, z: 32}
+  m_LocalScale: {x: 15.64, y: 2.1, z: 26.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -24290,7 +24290,7 @@ PrefabInstance:
         type: 3}
       propertyPath: warehouse
       value: 
-      objectReference: {fileID: 426103712}
+      objectReference: {fileID: 2124051838}
     - target: {fileID: 3508471426821652490, guid: 01827edbccc28b048a4db48451e1f61a,
         type: 3}
       propertyPath: pickupZone
