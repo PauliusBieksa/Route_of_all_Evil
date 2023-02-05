@@ -16165,6 +16165,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1649842160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1651309914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9035489378564501384, guid: 64eb9756e19a57146911e8ef657c4bad,
+    type: 3}
+  m_PrefabInstance: {fileID: 7621634516000462002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1671423834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17567,12 +17573,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1817989373}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1826062340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4488791763280948974, guid: 0856b06d2800b5c4387d67b96b93b93d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4488791761616432874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1826062341 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4488791763280948975, guid: 0856b06d2800b5c4387d67b96b93b93d,
     type: 3}
   m_PrefabInstance: {fileID: 4488791761616432874}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1826062344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826062340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f5c1143b2f3994a85b78de2dfa6186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  vehicle: {fileID: 1644302747}
+  ArrowSystem: {fileID: 0}
 --- !u!1001 &1855697770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20639,15 +20666,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7621634517652187880, guid: 64eb9756e19a57146911e8ef657c4bad,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277252011464559497, guid: 64eb9756e19a57146911e8ef657c4bad,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64eb9756e19a57146911e8ef657c4bad, type: 3}
+--- !u!114 &7974273061118816430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651309914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b27e6433286d9243bb2f531af359d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  vehicle: {fileID: 0}
+  RenderCam: {fileID: 2123628119}
+  TextureFormat: {fileID: 8600000, guid: 4c86babf6298333498acd92568804c3b, type: 2}
