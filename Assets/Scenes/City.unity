@@ -22532,6 +22532,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1031423567485113354, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: isFrontWheel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031423567485113354, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: groundContactRayLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251300628779748574, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: groundContactRayLength
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3267055480078827782, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22546,6 +22561,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -8.140001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873816246345839970, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: isFrontWheel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873816246345839970, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: groundContactRayLength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863849014250998787, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: groundContactRayLength
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7177225415709189089, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
         type: 3}
@@ -22626,6 +22656,21 @@ PrefabInstance:
         type: 3}
       propertyPath: DriveMaxTorque
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DownforceConstant
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: overrideDownforce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
+        type: 3}
+      propertyPath: DownForceThreshold
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8742423591042733592, guid: b1c1e63b07ecfc6489b01d1c6eebaa27,
         type: 3}

@@ -111,7 +111,7 @@ public class GameState : MonoBehaviour
             order.reward += Random.Range(0, 120);
             orders.Add(order);
             GameObject displayer = Instantiate(orderDisplayer, orderLayout.transform);
-            displayer.GetComponent<OrderVisualiser>().Initialise(order);
+            displayer.GetComponent<OrderVisualiser>().Initialise(order, i);
 
             order.building.GetComponent<MeshRenderer>().material = tintedMaterial;
         }

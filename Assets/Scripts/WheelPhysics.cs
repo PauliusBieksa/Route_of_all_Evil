@@ -9,14 +9,18 @@ public class WheelPhysics : MonoBehaviour
     public float RestDistance;
     public float SpringStrength;
     public float SpringDamper;
-
+    
     public float SteeringGrip;
     public float WheelMass;
+    public bool isFrontWheel;
 
     public AnimationCurve PowerCurve;
     [Range(0,1)]
     public float RollingResistance;
     public float MaxTorque;
+
+    public float DownforceConstant;
+    public double DownForceThreshold;
 
     private Vector3 overallForce;
     private Rigidbody vehicleRigidbody;
@@ -46,6 +50,7 @@ public class WheelPhysics : MonoBehaviour
             CalculateSuspension(hit.distance);
             CalculateSteeringForce();
             CalculateDrive();
+            DownForce(hit.distance);
             ApplyForce();
         }
         else
@@ -75,6 +80,12 @@ public class WheelPhysics : MonoBehaviour
             RollingResistance = vehicle.DriveRollingResistance;
             MaxTorque = vehicle.DriveMaxTorque;
         }
+
+        if (vehicle.overrideDownforce)
+        {
+            DownforceConstant = vehicle.DownforceConstant;
+            DownForceThreshold = vehicle.DownForceThreshold;
+        }
     }
 
 
@@ -102,17 +113,30 @@ public class WheelPhysics : MonoBehaviour
     
     private void CalculateSteeringForce()
     {
+        float gripValue = SteeringGrip;
+        
+        if (Input.GetAxis("Handbrake") > 0)
+        {
+            if (isFrontWheel)
+            {
+                gripValue = SteeringGrip * 2;
+            }
+            else
+            {
+                gripValue = SteeringGrip / 2;
+            }
+        }
         Vector3 steeringDirection = transform.right;
 
         Vector3 wheelWorldVelocity = vehicleRigidbody.GetPointVelocity(transform.position);
 
         float  steeringVelocity = Vector3.Dot(steeringDirection, wheelWorldVelocity);
 
-        float desiredVelocityChange = -steeringVelocity * SteeringGrip;
+        float desiredVelocityChange = -steeringVelocity * gripValue;
 
         float desiredAcceleration = desiredVelocityChange / Time.fixedDeltaTime;
 
-        Vector3 steeringForce = (steeringDirection * WheelMass * desiredAcceleration);
+        Vector3 steeringForce = (WheelMass * desiredAcceleration * steeringDirection);
         Debug.DrawRay(transform.position, steeringForce, Color.red);
         overallForce += steeringForce;
 
@@ -129,7 +153,13 @@ public class WheelPhysics : MonoBehaviour
         float normalisedSpeed = Mathf.Clamp01(Mathf.Abs(vehicleSpeed) / vehicle.TopSpeed);
         Vector3 driveForce = new Vector3(0,0,0);
 
-
+        if (Input.GetAxis("Handbrake") > 0)
+        {
+            Vector3 brakeForce = -vehicleSpeed * accelerationDirection;
+            overallForce += brakeForce;
+            Debug.DrawRay(transform.position, brakeForce, Color.cyan);
+            return;
+        }
 
         //Forward
         if (accelerationInput != 0 && vehicleSpeed < vehicle.TopSpeed)
@@ -139,13 +169,12 @@ public class WheelPhysics : MonoBehaviour
             driveForce = accelerationDirection * availableTorque;
             overallForce += driveForce;
         }
-
-
+        
         //Neutral;
         if (accelerationInput == 0 && vehicleSpeed > -vehicle.TopSpeed)
         {
             Vector3 deccelerationDirection = -transform.forward;
-            driveForce = deccelerationDirection * vehicleSpeed * RollingResistance;
+            driveForce =  vehicleSpeed * RollingResistance * deccelerationDirection;
             overallForce += driveForce;
             if (vehicleSpeed < 0.1 && vehicleSpeed > -0.1)
             {
@@ -154,7 +183,14 @@ public class WheelPhysics : MonoBehaviour
         }
 
         Debug.DrawRay(transform.position, driveForce, Color.blue);
+    }
 
+    private void DownForce(float hitDistance)
+    {
+        if (hitDistance > DownForceThreshold)
+        {
+            Vector3 downforce = DownforceConstant * hitDistance * -transform.up;
+        }
     }
 
     private void ApplyForce()

@@ -26,6 +26,9 @@ public class VehicleController : MonoBehaviour
     public float DriveMaxTorque;
 
     public GameState gameState;
+    public bool overrideDownforce;
+    public float DownforceConstant;
+    public double DownForceThreshold;
 
 
     // Update is called once per frame
@@ -42,7 +45,8 @@ public class VehicleController : MonoBehaviour
             wheel.transform.localRotation = Quaternion.Euler(0, -maxSteerAngle * steeringInput, 0);
         }
 
-
+        //RightingForce();
+        
         Debug.DrawRay(transform.position, GetComponent<Rigidbody>().mass * Physics.gravity, Color.white);
     }
 
@@ -51,6 +55,21 @@ public class VehicleController : MonoBehaviour
         if (other.gameObject.name == "PickupZone")
         {
             gameState.GetOrders();
+        }
+    }
+
+    private void RightingForce()
+    {
+        Debug.Log(transform.rotation.eulerAngles.z);
+        if (transform.rotation.eulerAngles.z > 45 && transform.rotation.eulerAngles.z < 180)
+        {
+            Debug.Log(transform.rotation);
+            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 45);
+        }
+        if (transform.rotation.eulerAngles.z > 180 && transform.rotation.eulerAngles.z < 315)
+        {
+            Debug.Log(transform.rotation);
+            transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 315);
         }
     }
 }
