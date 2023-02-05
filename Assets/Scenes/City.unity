@@ -15864,7 +15864,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Welcome <s>slave</s> valued contractor. \nMandatory Training: \n - WASD
-    to drive\n - shift to open targeting\n - F to deliver parcel"
+    to drive\n - shift to open targeting\n - F to deliver parcel\n - E to Change
+    parcel\nYou may not try again!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 807b55bccc521c041b1c8faf94cfc10e, type: 2}
   m_sharedMaterial: {fileID: -4436977322274331637, guid: 807b55bccc521c041b1c8faf94cfc10e,
@@ -15892,8 +15893,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 48.74
+  m_fontSizeBase: 48.74
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
