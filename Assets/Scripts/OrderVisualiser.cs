@@ -46,7 +46,6 @@ public class OrderVisualiser : MonoBehaviour
     {
         if (order == thisOrder)
         {
-            Destroy(arrow);
             Destroy(gameObject);
         }
     }
