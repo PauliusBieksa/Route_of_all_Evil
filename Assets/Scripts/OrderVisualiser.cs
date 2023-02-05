@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class OrderVisualiser : MonoBehaviour
 {
-    public VehicleController vehicle;
+    
     public GameObject ArrowSystem;
 
+    private VehicleController vehicle;
     private TextMeshProUGUI Item;
     private TextMeshProUGUI Address;
     private TextMeshProUGUI Payout;
@@ -17,6 +18,7 @@ public class OrderVisualiser : MonoBehaviour
 
     public void Initialise(GameState.Order order)
     {
+        vehicle = GameObject.FindObjectOfType<VehicleController>();
         Item.text = order.item;
         Address.text = order.address;
         Payout.text = $"${order.reward:0.##}";
