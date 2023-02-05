@@ -91,8 +91,6 @@ public class GameState : MonoBehaviour
 
         cash = startingCash;
         throwDirection = new Vector3(-45, 0, 0);
-
-        //GetOrders();
     }
 
     void Update()
@@ -142,7 +140,6 @@ public class GameState : MonoBehaviour
 
     private void RemoveOrder(Order order)
     {
-        //public Order(float reward, string address, string item, GameObject building)
         currentOrders.Remove(order);
         if (currentOrders.Count == 0)
         {
