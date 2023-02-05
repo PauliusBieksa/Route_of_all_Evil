@@ -14,19 +14,21 @@ public class OrderVisualiser : MonoBehaviour
     public TextMeshProUGUI Address;
     public TextMeshProUGUI Payout;
     public RawImage arrowImage;
+    
 
     private DirectionVisualiser arrow;
 
-    public void Initialise(GameState.Order order)
+    public void Initialise(GameState.Order order, int orderNum)
     {
         vehicle = GameObject.FindObjectOfType<VehicleController>();
+        Transform[] vehicleArrowHolders = vehicle.transform.Find("ArrowOffsets").GetComponentsInChildren<Transform>();
         Item.text = order.item;
         Address.text = order.address;
         Payout.text = $"${order.reward:0.##}";
 
         arrow = Instantiate(ArrowSystem).GetComponentInChildren<DirectionVisualiser>();
         arrow.targetObject = order.building.transform;
-        arrow.vehicle = vehicle;
+        arrow.VehicleArrowTransform = vehicleArrowHolders[orderNum+1];
         arrow.displayImage = arrowImage;
     }
 }
