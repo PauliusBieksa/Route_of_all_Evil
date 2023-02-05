@@ -39,6 +39,8 @@ public class GameState : MonoBehaviour
     public GameObject orderDisplayer;
     public Material originalMaterial;
     public Material tintedMaterial;
+    public GameObject warehouse;
+    public GameObject pickupZone;
 
     // lists
     private List<string> itemNames = new List<string>();
@@ -122,25 +124,46 @@ public class GameState : MonoBehaviour
     {
         currentOrders.Clear();
         currentOrders = CreateOrders(numOfOrders);
+        pickupZone.SetActive(false);
     }
 
     public void Deliver(Order order)
     {
         cash += order.reward;
         order.building.GetComponent<MeshRenderer>().material = originalMaterial;
-        currentOrders.Remove(order);
+        RemoveOrder(order);
     }
 
     public void FailToDeliver(Order order)
     {
         order.building.GetComponent<MeshRenderer>().material = originalMaterial;
+        RemoveOrder(order);
+    }
+
+    private void RemoveOrder(Order order)
+    {
+        //public Order(float reward, string address, string item, GameObject building)
         currentOrders.Remove(order);
+        if (currentOrders.Count == 0)
+        {
+            currentOrders.Add(new Order(0, "Back to warehouse", "for more fulfilment", warehouse));
+            pickupZone.SetActive(true);
+        }
     }
 
     public void ThrowBox()
     {
-        boxes[nextBoxIndex].Spawn(van.transform.position + new Vector3(2.3f, 1.1f, 2.4f),
-            throwDirection * throwForce + van.GetComponent<Rigidbody>().velocity, currentOrders[selctedOrderIndex]);
+        boxes[nextBoxIndex].Spawn(GetThrowPosition(), GetThrowVelocity(), currentOrders[selctedOrderIndex]);
+    }
+
+    public Vector3 GetThrowPosition()
+    {
+        return van.transform.position + new Vector3(2.3f, 1.1f, 2.4f);
+    }
+
+    public Vector3 GetThrowVelocity()
+    {
+        return throwDirection * throwForce + van.GetComponent<Rigidbody>().velocity;
     }
 
     private void GameOver()
